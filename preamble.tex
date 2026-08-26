@@ -1,0 +1,260 @@
+% ============================================================
+% BASIC ENCODING AND FONT
+% ============================================================
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Keep the standard LaTeX font
+% Computer Modern / Latin Modern appearance is preserved
+
+
+% ============================================================
+% LANGUAGE
+% ============================================================
+
+\usepackage[english]{babel}
+
+
+% ============================================================
+% PAGE GEOMETRY
+% ============================================================
+
+\usepackage[
+    inner=35mm,
+    outer=25mm,
+    top=30mm,
+    bottom=30mm,
+    headheight=18mm,
+    headsep=8mm
+]{geometry}
+
+
+% ============================================================
+% MATHEMATICS
+% ============================================================
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+
+% ============================================================
+% FIGURES AND TABLES
+% ============================================================
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+% ============================================================
+% COLOURS
+% ============================================================
+
+\usepackage{xcolor}
+
+% Default chapter colour
+\definecolor{chapterblue}{RGB}{0,70,140}
+
+
+% ============================================================
+% HEADER AND FOOTER
+% ============================================================
+
+\usepackage{fancyhdr}
+
+% Default chapter colour
+\definecolor{chapterblue}{RGB}{0,70,140}
+
+% Blue line thickness
+\newcommand{\headerlinethickness}{0.6pt}
+
+% Animation area
+\newlength{\headeranimationheight}
+\setlength{\headeranimationheight}{10mm}
+
+% Header height
+\setlength{\headheight}{18mm}
+
+
+% ============================================================
+% PAGE STYLE
+% ============================================================
+
+\pagestyle{fancy}
+
+\fancyhf{}
+
+% Page number
+\fancyfoot[RO,LE]{\thepage}
+
+
+% ============================================================
+% RIGHT-HAND PAGES
+% ============================================================
+
+% Animation only
+\fancyhead[RO]{%
+    \begin{minipage}[b][\headeranimationheight][b]{0.45\textwidth}
+        \raggedleft
+        \headeranimation
+    \end{minipage}%
+}
+
+
+% ============================================================
+% LEFT-HAND PAGES
+% ============================================================
+
+% Chapter/section information
+\fancyhead[LE]{%
+    \small
+    \nouppercase{\leftmark}%
+}
+
+
+% ============================================================
+% SINGLE LINE BELOW THE HEADER
+% ============================================================
+
+% Normal fancyhdr rule
+\renewcommand{\headrulewidth}{\headerlinethickness}
+
+% Change its colour
+\makeatletter
+\renewcommand{\headrule}{%
+    \hbox to\headwidth{%
+        \color{chapterblue}%
+        \leaders\hrule height\headerlinethickness\hfill
+    }%
+}
+\makeatother
+
+
+% ============================================================
+% CHAPTER OPENING PAGES
+% ============================================================
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+
+    \fancyfoot[RO,LE]{\thepage}
+
+    % Right-hand page: animation
+    \fancyhead[RO]{%
+        \begin{minipage}[b][\headeranimationheight][b]{0.45\textwidth}
+            \raggedleft
+            \headeranimation
+        \end{minipage}%
+    }
+
+    % Left-hand page: chapter/section information
+    \fancyhead[LE]{%
+        \small
+        \nouppercase{\leftmark}%
+    }
+
+    % One single line
+    \renewcommand{\headrulewidth}{\headerlinethickness}
+}
+
+
+% ============================================================
+% ANIMATION IMAGE PLACEHOLDER
+% ============================================================
+
+\newcommand{\headeranimation}{%
+    % Empty by default
+    %
+    % Example:
+    % \includegraphics[height=9mm]{figures/header/frame-001.pdf}
+}
+
+
+% ============================================================
+% CHAPTER COLOUR COMMAND
+% ============================================================
+
+\newcommand{\chaptercolor}[1]{%
+    \colorlet{chapterblue}{#1}%
+}
+
+
+% ============================================================
+% CHAPTER MARKS
+% ============================================================
+
+\renewcommand{\chaptermark}[1]{%
+    \markboth{%
+        \thechapter\quad #1
+    }{}
+}
+
+\renewcommand{\sectionmark}[1]{%
+    \markright{%
+        \thesection\quad #1
+    }%
+}
+
+
+% ============================================================
+% BIBLIOGRAPHY
+% ============================================================
+
+\usepackage[
+    backend=biber,
+    style=numeric,
+    sorting=none
+]{biblatex}
+
+\addbibresource{bibliography/references.bib}
+
+
+% ============================================================
+% GLOSSARY AND ACRONYMS
+% ============================================================
+
+\usepackage[
+    acronym,
+    toc,
+    nonumberlist
+]{glossaries-extra}
+
+\makeglossaries
+
+\input{glossary}
+
+
+% ============================================================
+% NOMENCLATURE
+% ============================================================
+
+\usepackage[intoc]{nomencl}
+
+\makenomenclature
+
+% Optional nomenclature grouping
+\renewcommand{\nomname}{Nomenclature}
+
+
+% ============================================================
+% INDEX
+% ============================================================
+
+\usepackage{makeidx}
+
+\makeindex
+
+
+% ============================================================
+% HYPERLINKS
+% ============================================================
+
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black
+]{hyperref}

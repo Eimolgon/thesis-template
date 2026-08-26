@@ -1,0 +1,103 @@
+\documentclass[
+    11pt,
+    a4paper,
+    twoside,
+    openright
+]{report}
+
+\input{preamble}
+
+% ============================================================
+% DOCUMENT
+% ============================================================
+
+\begin{document}
+
+% ------------------------------------------------------------
+% FRONT MATTER
+% ------------------------------------------------------------
+
+\pagenumbering{roman}
+
+\input{frontmatter/titlepage}
+
+\cleardoublepage
+
+\input{frontmatter/abstract}
+
+\cleardoublepage
+
+\tableofcontents
+
+\cleardoublepage
+
+\listoffigures
+
+\cleardoublepage
+
+\listoftables
+
+\cleardoublepage
+
+\printnomenclature
+
+\cleardoublepage
+
+\printglossary[
+    title=Glossary,
+    toctitle=Glossary
+]
+
+\cleardoublepage
+
+\printglossary[
+    type=\acronymtype,
+    title=List of Abbreviations,
+    toctitle=List of Abbreviations
+]
+
+
+% ------------------------------------------------------------
+% MAIN MATTER
+% ------------------------------------------------------------
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\input{chapters/01-introduction}
+\input{chapters/02-classification}
+\input{chapters/03-pose-estimation}
+\input{chapters/04-experiments}
+\input{chapters/05-simulation}
+\input{chapters/06-control}
+\input{chapters/07-discussion}
+\input{chapters/08-conclusion}
+
+
+% ------------------------------------------------------------
+% APPENDICES
+% ------------------------------------------------------------
+
+\appendix
+
+\input{appendices/appendix_a}
+
+
+% ------------------------------------------------------------
+% BIBLIOGRAPHY
+% ------------------------------------------------------------
+
+\cleardoublepage
+
+\printbibliography
+
+
+% ------------------------------------------------------------
+% INDEX
+% ------------------------------------------------------------
+
+\cleardoublepage
+
+\printindex
+
+\end{document}
